@@ -21,6 +21,8 @@ table {
   border-collapse: collapse;
   margin:auto; 
   margin-top: 30px;
+  border:2px solid grey;
+  box-shadow: 2px 3px 5px #888888;
 }
 
 td{
@@ -90,5 +92,6 @@ table#table2 tfoot{
   color: yellow;
   font-weight: bold;	
 }
+
 
 
