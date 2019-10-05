@@ -28,7 +28,7 @@ td{
   margin: 2px;
 }
 table, th{
-  font-size: 20px;
+  font-size: 17px;
 }
 
 tbody tr:last-of-type td{
@@ -36,6 +36,11 @@ tbody tr:last-of-type td{
 }
 
 table#table1 thead{
+  background-color: lightGrey;
+  color: black;
+}
+
+table#table2 thead{
   background-color: lightGrey;
   color: black;
 }
@@ -48,12 +53,29 @@ table#table1 caption{
   color: black;
 }
 
+table#table2 caption{
+  display: table-caption;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
 #table1 tr:nth-of-type(2n+1){
-  background-color: black;
+  background-color: darkGreen;
+  color: lightGrey;
+}
+
+#table2 tr:nth-of-type(2n+1){
+  background-color: darkRed;
   color: lightGrey;
 }
 
 #table1 tr:nth-of-type(2n+2){
+  background-color: darkGrey;
+}
+
+#table2 tr:nth-of-type(2n+2){
   background-color: darkGrey;
 }
 
@@ -62,4 +84,11 @@ table#table1 tfoot{
   color: yellow;
   font-weight: bold;	
 }
+
+table#table2 tfoot{
+  background-color: orange;
+  color: yellow;
+  font-weight: bold;	
+}
+
 
