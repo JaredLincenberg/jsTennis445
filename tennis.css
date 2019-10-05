@@ -137,24 +137,21 @@ nav a:hover, .dropdown:hover .dropbtn {
   display: block;
 }
 
-
-div#instruction{
-  float:right;
-  background-color: rgba(76, 175, 80, 0.1);
-  color: lightGrey;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 20px;
+div.game{
+  padding-top: 30px;
+  color: white;
+}
+.module{
+  width: 20%;
+  float: left;
+  color: white;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  border-top: 4px solid #darkGreen;
+  padding: 0.8em;
+  background-color: rgba(76, 175, 80, 0.5);
 }
 
-div.about{
-  float:left;
-  background-color: rgba(76, 175, 80, 0.1);
-  color: lightGrey;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 20px;
-}
 
 footer{
   background-color: darkRed;
