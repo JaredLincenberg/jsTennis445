@@ -7,6 +7,7 @@ main {
   background-repeat: no-repeat;
   background-size: 100% 100%;  
   z-index: -1;
+    border-radius: 0px 0px 20px 20px;
 }
 body{
   margin-bottom:0px;
@@ -15,14 +16,13 @@ body{
 
 div.welcome{
   background-color: #73be27;
-  background-position: center center;
-  background-repeat: no-repeat;
-  padding-top:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  padding-left:30px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 60px;
+  padding-left: 30px;
   margin-bottom: 0px;
   margin-top: 0px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 img.titleimg{
@@ -66,13 +66,79 @@ h2{
   text-align: center;
 }
 
-div#arrow{
-  bottom:-28px;
-  border-bottom:1px solid #73be27;
-  border-left:1px solid #73be27;
+nav a {
+  float:left;
+  font-size: 16px;
+  color: darkGreen;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: white;
+  border: solid 2px darkGreen;
+  border-radius: 15px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 
-div.instruction{
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 15px;  
+  border: solid 2px darkGreen;
+  outline: none;
+  color: darkGreen;
+  padding: 14px 16px;
+  margin: 0;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.dropdown{
+  margin-left: 2px;
+}
+
+nav a:hover, .dropdown:hover .dropbtn {
+  background-color: darkGreen;
+  color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  color: darkGreen;
+  border-radius: 15px;
+  padding:1px;
+  border: solid 1px darkGreen;
+  box-shadow: 5px 5px 3px #aaaaaa;
+}
+
+.dropdown-content a {
+  float: none;
+  color: darkGreen;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 15px;
+  text-align: center;
+  margin-top:1px;
+}
+
+.dropdown-content a:hover {
+  background-color: darkGreen;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+div#instruction{
   float:right;
   background-color: rgba(76, 175, 80, 0.1);
   color: lightGrey;
@@ -88,4 +154,20 @@ div.about{
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
+}
+
+footer{
+  background-color: darkRed;
+  padding: 20px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  border-radius: 20px;
+  line-height: 28px;
+  margin-top: 0;
+  color: black;
+  
 }
