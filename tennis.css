@@ -3,6 +3,7 @@ canvas {
 }
 main {
 	text-align: center;
+	background-color: lightblue;
 }
 body{
   background-image: url("images/background2.jpg");
@@ -21,4 +22,6 @@ div.instruction{
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
+
+	
 }

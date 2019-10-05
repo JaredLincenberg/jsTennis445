@@ -22,6 +22,9 @@ $(document).ready(function() {
 	//highscore(testScore);
 
 });
+	
+
+
 
 function initGame(gameArea) {
 	displayCourt(gameArea);
