@@ -4,10 +4,9 @@
 
   <title>Tennis JS</title>
   <meta charset="UTF-8">
-  <meta name="description" content="Basic information about Jared Lincenberg.">
-  <meta name="author" content="Jared Lincenberg">
+  <meta name="description" content="A small tennis game.">
+  <meta name="author" content="Jared Lincenberg, Trevor Kerr, Yu Sun">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
   <link rel="stylesheet" href="highscore.css">
   <link rel="stylesheet" href="tennis.css">
@@ -17,13 +16,28 @@
   
 </head>
 <body>
-  <h1>Tennis JS</h1>
+  <img class="titleimg" src="images/logo.png" alt="the tennis logo"><br> 
   <hr>
+  <div class="welcome">
+    <img class="gif" src="images/giphy.gif" alt="gif">  
+    <h1 class="headh1" data-fontsize="22" data-lineheight="28">Welcome To The Tennis Game!</h1>
+    <hr id="headline">
+    <h2> Try the tennis game with us to earn the highest score!</h2>
+  </div>
+  <div id="arraw"></div>
   <nav>
 
   </nav>
 
   <main>
+  	<div class="about">
+	  <section>
+	    <h2>About Us</h2>
+	    <p> Team Name: JTY</p>
+	    <p> Team Member: Jared Lincenberg, Trevor Kerr, Yu Sun</p>
+	  </section>
+	</div>
+	
   	<div class="instruction">
 	  <section>
 	    <h2>How To Play the Game</h2>
@@ -31,6 +45,7 @@
 	    <p> Try to play more rounds to earn higher scores! Good luck!</p>
 	  </section>
 	</div>
+	
     <canvas id = "gameCanvas">
     </canvas>
 	
