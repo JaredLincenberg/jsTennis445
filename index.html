@@ -31,17 +31,54 @@
           <em class="em_"></em>
         </button>
         <div class="dropdown-content">
-          <a href="../csstutorials/turtlecoders.html">Game Idea</a>
-          <a href="../csstutorials/posEx.html">How to Paly</a>
+          <a href="#idea">Game Idea</a>
+          <a href="instruction">How to Paly</a>
+		  <a href="#level">Chanllege</a>
+          <a href="#score">Score</a>
         </div>
       </div>
 	  <a href="#highdiv">High Score</a>
-      <a href="#instruction">About Us</a>
+      <a href="#about">About Us</a>
     </nav>
   </div>
 
   <main>
-  	<div class="about">
+	<div class="aboutgame">
+	  <h2>About Game</h2>
+	  <section id="idea" class="module">
+	    <h3>Game Idea</h3>
+	    <p>  In this game, You can play tennis against a computer. The ball will bounce oﬀ of your racket, 
+		the wall and the computer’s racket. With the goal to try to get it past the computer’s racket.
+        </p>
+	  </section>
+	  
+	  <section id="instruction" class="module">
+	    <h3>How To Play the Game</h3>
+	    <p> You can use the arrow keys or WASD keys to move the position of your player’s racket.
+	    You will lose the game if you miss 3 balls from the computer. 
+		Try to play more rounds to earn higher scores! Good luck!</p>
+	  </section>
+	  
+	  <section id="level" class="module">
+	    <h3>Chanllege</h3>
+		<p> With the goal to try to get it past the computer’s racket. 
+		As the number of times the ball gets past the computer increases, the computer’s racket speedup.		
+        </p>
+	  </section>
+	  
+	  <section id="score" class="module">
+	    <h3>Score</h3>
+		<p> The score will be recorded as the number of times the ball gets past the computer’s racket. 
+		The ball will move faster as the player scores more points. The high scores will be recorded for the best players.		
+        </p>
+	  </section>
+	</div>
+	
+	
+    <canvas id ="gameCanvas">
+    </canvas>
+	
+	<div>
 	  <section>
 	    <h2>About Us</h2>
 	    <p> Team Name: JTY</p>
@@ -49,27 +86,15 @@
 	  </section>
 	</div>
 	
-  	<div id="instruction">
-	  <section>
-	    <h2>How To Play the Game</h2>
-	    <p> You can use the arrow keys or WASD keys to move the position of your player’s racket.</p>
-	    <p> Try to play more rounds to earn higher scores! Good luck!</p>
-	  </section>
-	</div>
-	
-    <canvas id = "gameCanvas">
-    </canvas>
-	
-	<div id="highdiv">
-    <table id="hightable">
-      <tr>
-        <th>Pos</th>
-        <th>Score</th>
-		<th>User</th>
-      </tr>
+	<div id="highdiv"">
+      <table id="hightable">
+        <tr>
+          <th>Pos</th>
+          <th>Score</th>
+		  <th>User</th>
+        </tr>
 	  
-	</table>
-    </table>
+	  </table>
       <table id="myhightable">
         <tr>
           <th colspan="2">Your High Score</th>
@@ -77,7 +102,7 @@
         <tr id="myhighscore">
           <td colspan="2">You don't have one yet!</td>
         </tr>
-      </table>
+        </table>
 	</div>
   </main>
 
