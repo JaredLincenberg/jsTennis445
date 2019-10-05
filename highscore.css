@@ -1,27 +1,65 @@
 
 #hightable,#myhightable{
-    width:50%;
-    margin:auto;
-    margin-top:8px;
-    text-align: center;
+  width:50%;
+  margin:auto;
+  margin-top:8px;
+  text-align: center;
 }
 
 #hightable td,#myhightable td{
-    border: 1px black solid;
+  border: 1px black solid;
 }
 
 #highlogo{
-    width: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#highdiv{
-    background-color: #1a6ecc;
-    width:50%;
-    margin:auto;
-    border-radius: 16px;
-    padding:8px;
-    margin-top: 16px;
+table {
+  border-collapse: collapse;
+  margin:auto; 
+  margin-top: 30px;
 }
+
+td{
+  padding: 2px;
+  margin: 2px;
+}
+table, th{
+  font-size: 20px;
+}
+
+tbody tr:last-of-type td{
+	border-bottom: 1px solid black;
+}
+
+table#table1 thead{
+  background-color: lightGrey;
+  color: black;
+}
+
+table#table1 caption{
+  display: table-caption;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+#table1 tr:nth-of-type(2n+1){
+  background-color: black;
+  color: lightGrey;
+}
+
+#table1 tr:nth-of-type(2n+2){
+  background-color: darkGrey;
+}
+
+table#table1 tfoot{
+  background-color: orange;
+  color: yellow;
+  font-weight: bold;	
+}
+
