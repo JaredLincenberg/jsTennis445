@@ -5,8 +5,8 @@ $(document).ready(function() {
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
-			this.canvas.height = 650;
-			this.canvas.width = 400;
+			this.canvas.height = 400;
+			this.canvas.width = 650;
 			this.context = this.canvas.getContext('2d')
 			this.frameNumber = 0;
 		},
