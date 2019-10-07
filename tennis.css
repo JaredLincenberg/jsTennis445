@@ -14,7 +14,7 @@ body{
   overflow-x: hidden;
 }
 
-div.welcome{
+header.welcome{
   background-color: #73be27;
   padding-top: 30px;
   padding-right: 30px;
@@ -173,6 +173,10 @@ canvas#gameCanvas{
   /*border: 4px solid darkgreen;*/
   /*margin-left: 8%;*/
   margin-top: 8%;
+  background-image: url("images/court.png"); 
+  background-repeat: no-repeat; 
+  background-color: #1db34a; 
+  background-position: center;
 }
 
 button#startbtn{
