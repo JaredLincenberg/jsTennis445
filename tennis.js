@@ -27,29 +27,58 @@ $(document).ready(function() {
 		draw : function () {
 			tennisBall.ball.onload = function () {
 				var can = tennisBall;
-				gameArea.context.drawImage(this,can.xPos,can.yPos, can.width, can.height);
-				console.log(this);
+				gameArea.context.drawImage(this, can.xPos, can.yPos, can.width, can.height);
 			}
 		}
 	}
 	var playerRacket = {
 		height: 50,
 		width: 10,
-		xPos: 100,
+		xPos: 40,
 		yPos: 300,
 		draw : function () {
-			// gameArea.context.beginPath();
 			gameArea.context.fillStyle = "#FF0000";
-			gameArea.context.fillRect(this.xPos,this.yPos,this.xPos+this.width,this.yPos+this.height);
-			//gameArea.context.stroke();
+			gameArea.context.fillRect(this.xPos, this.yPos, this.width, this.height);
 		}
 	}
-	initGame(gameArea);
+	var computerRacket = {
+		height: 50,
+		width: 10,
+		xPos: 590,
+		yPos: 300,
+		draw : function () {
+			gameArea.context.fillStyle = "#FF0000";
+			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);
+		}
+	}
+	initGame();
 	
-	gameArea.start();
-	tennisBall.source = "images/tennisBallTest.png";
-	tennisBall.draw();
-	playerRacket.draw();
+	
+	
+	
+
+
+
+	function initGame() {
+		//displayCourt(gameArea);
+		gameArea.start();
+		gameArea.clear();
+		tennisBall.source = "images/tennisBallTest.png";
+		drawLoop();
+	}
+
+
+
+	function drawLoop(){
+		tennisBall.draw();
+		playerRacket.draw();
+		computerRacket.draw();
+	}
+
+
+
+
+
 	// UNCOMMENT WHEN TURNING IN
 	//highscore(testScore);
 
@@ -58,14 +87,5 @@ $(document).ready(function() {
 
 
 
-function initGame(gameArea) {
-	//displayCourt(gameArea);
-	drawLoop(gameArea);
-}
 
-
-
-function drawLoop(){
-
-}
 
