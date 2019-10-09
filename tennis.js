@@ -1,8 +1,14 @@
-
 $(document).ready(function() {
 	// UNCOMMENT WHEN TURNING IN
 	//update_scores();
+	document.addEventListener("keypress", keyEvent, false);
+	window.setInterval(function(){
+		drawLoop();
+	  }, 16);
+
 	var testScore = 10;
+	var computerScore = 0;
+	var playerScore = 0;
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
@@ -20,15 +26,29 @@ $(document).ready(function() {
 		width: 25,
 		xPos: 400,
 		yPos: 200,
+		xDir: 1,
+		yDir: 0,
 		ball: new Image(),
 		set source(file){
 			this.ball.src = file;
 		},
 		draw : function () {
-			tennisBall.ball.onload = function () {
-				var can = tennisBall;
-				gameArea.context.drawImage(this, can.xPos, can.yPos, can.width, can.height);
+			gameArea.clear();
+			gameArea.context.drawImage(this.ball, this.xPos, this.yPos);
+		},
+		updateBall: function() {
+			if(this.xPos < 0) {
+				computerScore++;
 			}
+			if(this.xPos > 590){
+				playerScore++;
+			}
+			if(this.yPos > 358 || this.yPos < 12){
+				this.yDir *= -1;
+			}
+			
+			this.xPos += this.xDir;
+			this.yPos += this.yDir;
 		}
 	}
 	var playerRacket = {
@@ -54,29 +74,44 @@ $(document).ready(function() {
 	initGame();
 	
 	
-	
-	
-
 
 
 	function initGame() {
 		//displayCourt(gameArea);
 		gameArea.start();
 		gameArea.clear();
-		tennisBall.source = "images/tennisBallTest.png";
+		tennisBall.source = "images/ball.gif";
 		drawLoop();
 	}
 
 
 
 	function drawLoop(){
-		tennisBall.draw();
-		playerRacket.draw();
-		computerRacket.draw();
+			tennisBall.updateBall();
+			tennisBall.draw();
+			playerRacket.draw();
+			computerRacket.draw();
 	}
 
 
-
+	function keyEvent(event) {
+		switch(event.keyCode) {
+			case 119:
+				// w
+				playerRacket.yPos--;
+				break;
+			case 65:
+				// a
+				break;
+			case 115:
+				// s
+				playerRacket.yPos++;
+				break;
+			case 68:
+				// d
+				break;	
+		}	
+	}
 
 
 	// UNCOMMENT WHEN TURNING IN
