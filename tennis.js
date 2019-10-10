@@ -9,6 +9,7 @@ $(document).ready(function() {
 	var testScore = 10;
 	var computerScore = 0;
 	var playerScore = 0;
+	var racketSpeed = 5;
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
@@ -37,10 +38,14 @@ $(document).ready(function() {
 			gameArea.context.drawImage(this.ball, this.xPos, this.yPos);
 		},
 		updateBall: function() {
-			if(this.xPos < 0) {
+			if(this.xPos < 25) {
+				if((this.yPos + this.height) >= playerRacket.yPos && this.xPos <= (playerRacket.yPos + playerRacket.height)){
+					this.xSpeed *= -1;
+				}
 				computerScore++;
 			}
-			if(this.xPos > 590){
+			if(this.xPos > 580){
+				this.xSpeed *= -1;
 				playerScore++;
 			}
 			if(this.yPos + this.height > 358 || this.yPos < 12){
@@ -67,7 +72,7 @@ $(document).ready(function() {
 	var playerRacket = {
 		height: 50,
 		width: 10,
-		xPos: 40,
+		xPos: 20,
 		yPos: 300,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
@@ -77,7 +82,7 @@ $(document).ready(function() {
 	var computerRacket = {
 		height: 50,
 		width: 10,
-		xPos: 590,
+		xPos: 602,
 		yPos: 300,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
@@ -87,6 +92,9 @@ $(document).ready(function() {
 				this.yPos++;
 			}
 			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);
+			if(tennisBall.xSpeed > 0){
+				this.yPos = tennisBall.yPos - this.height / 2 + tennisBall.height / 2;
+			}
 		}
 	}
 	initGame();
@@ -105,10 +113,10 @@ $(document).ready(function() {
 
 
 	function drawLoop(){
-			tennisBall.updateBall();
-			tennisBall.draw();
-			playerRacket.draw();
-			computerRacket.draw();
+		tennisBall.updateBall();
+		tennisBall.draw();
+		playerRacket.draw();
+		computerRacket.draw();
 	}
 
 
@@ -116,14 +124,14 @@ $(document).ready(function() {
 		switch(event.keyCode) {
 			case 119:
 				// w
-				playerRacket.yPos--;
+				playerRacket.yPos-=racketSpeed;
 				break;
 			case 65:
 				// a
 				break;
 			case 115:
 				// s
-				playerRacket.yPos++;
+				playerRacket.yPos+=racketSpeed;
 				break;
 			case 68:
 				// d
