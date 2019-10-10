@@ -26,8 +26,8 @@ $(document).ready(function() {
 		width: 25,
 		xPos: 400,
 		yPos: 200,
-		xDir: 1,
-		yDir: 0,
+		xDir: Math.random() * (4) - 2,
+		yDir: Math.random() * (4) - 2,
 		ball: new Image(),
 		set source(file){
 			this.ball.src = file;
@@ -43,10 +43,23 @@ $(document).ready(function() {
 			if(this.xPos > 590){
 				playerScore++;
 			}
-			if(this.yPos > 358 || this.yPos < 12){
+			if(this.yPos + this.height > 358 || this.yPos < 12){
 				this.yDir *= -1;
 			}
-			
+			if(this.yPos + this.height >= playerRacket.yPos && this.yPos <= playerRacket.yPos+playerRacket.height){
+				if(this.xPos >= playerRacket.xPos && this.xPos <= playerRacket.xPos+playerRacket.width){
+					this.xDir *= -1.1;
+					this.yDir *= 1.1;
+				}
+			}
+
+			if(this.yPos >= computerRacket.yPos && this.yPos <= computerRacket.yPos+computerRacket.height){
+				if(this.xPos + this.width >= computerRacket.xPos && this.xPos + this.width <= computerRacket.xPos+computerRacket.width){
+					this.xDir *= -1.1;
+					this.yDir *= -1.1;
+				}
+			}
+
 			this.xPos += this.xDir;
 			this.yPos += this.yDir;
 		}
@@ -68,6 +81,11 @@ $(document).ready(function() {
 		yPos: 300,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
+			if(tennisBall.yPos < this.yPos){
+				this.yPos--;
+			} else if(tennisBall.yPos > this.yPos){
+				this.yPos++;
+			}
 			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);
 		}
 	}
@@ -119,8 +137,3 @@ $(document).ready(function() {
 
 });
 	
-
-
-
-
-
