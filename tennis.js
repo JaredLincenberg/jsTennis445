@@ -48,7 +48,7 @@ $(document).ready(function() {
 				computerScore++;
 				resetField();
 			}
-			if(this.xPos > 580){
+			if(this.xPos > 602){
 				playerScore++;
 				resetField();
 			}
