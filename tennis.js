@@ -18,14 +18,13 @@ $(document).ready(function() {
 			this.context = this.canvas.getContext('2d')
 			this.frameNumber = 0;
 			this.context.font ="30px Arial";
-			this.context.fillText(playerScore.toString(), 100, 100);
-			this.context.fillText(computerScore.toString(), 500, 100);
 		},
 		clear : function() {
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		},
 		drawText : function(text, x, y) {
-			this.context.fillText(text, x, y);
+			$("p.canvaslive").html("Live: " + (3-computerScore));
+			$("p.canvasscore").html("Score: " + playerScore);
 		}
 	}
 	var tennisBall = {
