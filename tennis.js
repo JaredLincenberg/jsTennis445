@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	// UNCOMMENT WHEN TURNING IN
-	//update_scores();
+	
 	document.addEventListener("keypress", keyEvent, false);
 	document.getElementById("canvasstart").addEventListener("click",() => startNewGame());
 	
@@ -9,6 +9,7 @@ $(document).ready(function() {
 	var computerScore = 0;
 	var playerScore = 0;
 	var racketSpeed = 7;
+	var hasReported = false;
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
@@ -19,8 +20,8 @@ $(document).ready(function() {
 			this.context = this.canvas.getContext('2d')
 			this.frameNumber = 0;
 			this.context.font ="30px Arial";
-			this.context.fillText("You", 100, 100);
-			this.context.fillText("Computer", 500, 100);
+			// this.context.fillText("You", 100, 100);
+			// this.context.fillText("Computer", 500, 100);
 		},
 		clear : function() {
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -41,7 +42,7 @@ $(document).ready(function() {
 		xPos: 300,
 		yPos: 200,
 		xySpeed: 2,
-		xDir: -3,
+		xDir: -2,
 		yDir: 0.1,
 		maxThetaUp: 0,
 		maxThetaDown: 0,
@@ -56,7 +57,7 @@ $(document).ready(function() {
 			this.xPos = 300;
 			this.yPos = 200;
 			this.xySpeed = 2;
-			this.xDir = -3;
+			this.xDir = -2;
 			this.yDir = 0.1;
 			this.maxThetaUp = 0;
 			this.maxThetaDown = 0;
@@ -185,7 +186,7 @@ $(document).ready(function() {
 
 		gameArea.start();
 		// gameArea.drawText();
-		gameArea.drawCanvasText();
+		// gameArea.drawCanvasText();
 		tennisBall.source = "images/ball.gif";
 		playerRacket.source = "images/playerracket.png";
 		computerRacket.source = "images/computerracket.png";
@@ -193,6 +194,8 @@ $(document).ready(function() {
 		
 	}
 	function startNewGame() {
+		update_scores();
+		hasReported = false;
 		gameArea.start();
 		gameArea.clear();
 		console.log("start");
@@ -207,6 +210,7 @@ $(document).ready(function() {
 	}
 	function lose(){
 		if(computerScore >= 3){
+			
 			return true;
 		}
 		else{
@@ -217,6 +221,10 @@ $(document).ready(function() {
 	function printGameOver(){
 		gameArea.context.font ="50px Arial";
 		gameArea.context.fillText("Game Over", 180, 200);
+		if (!hasReported) {
+			highscore(playerScorer);
+			hasReported = true;
+		}
 	}
 	
 	function drawLoop(){
@@ -226,7 +234,7 @@ $(document).ready(function() {
 			playerRacket.draw();
 			computerRacket.draw();		
 			gameArea.drawText();
-			gameArea.drawCanvasText();
+			// gameArea.drawCanvasText();
 		}
 		else{
 			printGameOver();
@@ -267,7 +275,7 @@ $(document).ready(function() {
 	}
 
 	// UNCOMMENT WHEN TURNING IN
-	//highscore(testScore);
+	//
 
 });
 	
