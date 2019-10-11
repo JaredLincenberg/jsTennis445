@@ -33,11 +33,12 @@ $(document).ready(function() {
 		width: 25,
 		xPos: 400,
 		yPos: 200,
-		xDir: Math.random() * (4) - 2,
-		yDir: Math.random() * (4) - 2,
+		xySpeed: 4,
+		xDir: -1 * Math.random() * (3) + 3,
+		yDir: 0,
 		maxThetaUp: 0,
 		maxThetaDown: 0,
-		xySpeed: 4,
+		adjTheta: 0,
 		ball: new Image(),
 		set source(file){
 			this.ball.src = file;
@@ -63,23 +64,22 @@ $(document).ready(function() {
 					// the ball moves down
 					if(Math.random() >= 0.5){
 						this.maxThetaDown = (338 - this.yPos) / 583;
-						console.log(this.maxThetaDown);
-						adjTheta = this.maxThetaDown * Math.random();
-						this.yDir = Math.sin(adjTheta) * this.xySpeed;
-						this.xDir = Math.cos(adjTheta) * this.xySpeed;					
+						this.adjTheta = this.maxThetaDown * Math.random();
+						this.yDir = Math.sin(this.adjTheta) * this.xySpeed;
+						this.xDir = Math.cos(this.adjTheta) * this.xySpeed;					
 					}
 					// the ball moves up
 					else{
 						this.maxThetaUp = (this.yPos - 49) / 583;
-						adjTheta = this.maxThetaUp * Math.random();
-						this.yDir = -1 * Math.sin(adjTheta) * this.xySpeed;
-						this.xDir = Math.cos(adjTheta) * this.xySpeed;	
+						this.adjTheta = this.maxThetaUp * Math.random();
+						this.yDir = -1 * Math.sin(this.adjTheta) * this.xySpeed;
+						this.xDir = Math.cos(this.adjTheta) * this.xySpeed;	
 					}
 				}
 			}
 
-			if(this.yPos >= computerRacket.yPos && this.yPos <= computerRacket.yPos+computerRacket.height){
-				if(this.xPos + this.width >= computerRacket.xPos && this.xPos + this.width <= computerRacket.xPos+computerRacket.width){
+			if(this.yPos + this.height >= computerRacket.yPos && this.yPos <= computerRacket.yPos + computerRacket.height){
+				if(this.xPos + this.width >= computerRacket.xPos && this.xPos + this.width <= computerRacket.xPos + computerRacket.width){
 					// the ball moves down
 					if(Math.random() >= 0.5){
 						this.maxThetaDown = (338 - this.yPos) / 583;
@@ -96,7 +96,6 @@ $(document).ready(function() {
 					}
 				}
 			}
-			console.log(this.xDir);
 			this.xPos += this.xDir;
 			this.yPos += this.yDir;
 		}
@@ -116,6 +115,7 @@ $(document).ready(function() {
 		width: 10,
 		xPos: 602,
 		yPos: 300,
+		adjSpeed: 0,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
 			if(tennisBall.yPos < this.yPos){
@@ -123,6 +123,8 @@ $(document).ready(function() {
 			} else if(tennisBall.yPos > this.yPos){
 				this.yPos++;
 			}
+			//this.yPos += this.adjSpeed;
+			
 			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);
 		}
 	}
@@ -175,8 +177,8 @@ $(document).ready(function() {
 		
 		tennisBall.xPos = 400;
 		tennisBall.yPos = 200;
-		tennisBall.xDir = Math.random() * (3) + 1;
-		tennisBall.yDir = Math.random() - 0.5;
+		tennisBall.xDir = 3;
+		tennisBall.yDir = 0.1;
 	}
 
 	// UNCOMMENT WHEN TURNING IN
