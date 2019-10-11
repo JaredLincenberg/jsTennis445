@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="highscore.css">
   <link rel="stylesheet" href="tennis.css">
   <script src="jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="HighscoreAPI.js"></script>
-  <script type="text/javascript" src="tennis.js"></script>
+  <script src="HighscoreAPI.js"></script>
+  <script src="tennis.js"></script>
   
 </head>
 <body>
@@ -54,7 +54,7 @@
 	  
 	  <section id="instruction" class="module">
 	    <h3>How To Play the Game</h3>
-	    <p> You can use the 'W' key to move left and 'D' key to move right the position of your player’s racket.
+	    <p> You can use the 'w' key to move left and 's' key to move right the position of your player’s racket.
 	    You will lose the game if you miss 3 balls from the computer. 
 		Try to play more rounds to earn higher scores! Good luck!</p>
 	  </section>
@@ -81,13 +81,13 @@
       <canvas id ="gameCanvas" style="border:2px solid black;"></canvas><br>
 	  
 	  <button id="canvasstart" onclick="initGame()">PLAY</button><br>
-	  <span id="direction">Press 'w' and 'd' to move left and right.</span>
+	  <span id="direction">Press 'w' and 's' to move left and right.</span>
 	</div>
 	
     <hr>
 	
 	<div id="highdiv">
-		<h2>Scores<h2>
+		<h2>Scores</h2>
 		<table id="hightable">
 			<tr>
 				<th>User</th>
@@ -95,6 +95,7 @@
 			</tr>
 
 		</table>
+		
 		<table id="myhightable">
 			<tr>
 				<th colspan="2">Your High Score</th>
