@@ -220,6 +220,14 @@ p.canvaslive{
   font-size: 25px;
 }
 
+#direction{
+  color: red;
+  font:size: 16px;
+  margin: auto;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 #canvasstart{
   display:inline-block;
   padding:0.35em 1.2em;
@@ -235,6 +243,7 @@ p.canvaslive{
   text-align:center;
   transition: all 0.2s;
   margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 10px;
   font-weight: bold;
 }
