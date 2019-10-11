@@ -2,9 +2,8 @@ $(document).ready(function() {
 	// UNCOMMENT WHEN TURNING IN
 	//update_scores();
 	document.addEventListener("keypress", keyEvent, false);
-	window.setInterval(function(){
-		drawLoop();
-	  }, 16);
+	document.getElementById("canvasstart").addEventListener("click",() => startNewGame());
+	
 
 	var testScore = 10;
 	var computerScore = 0;
@@ -13,6 +12,8 @@ $(document).ready(function() {
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
+			computerScore = 0;
+			playerScore = 0;
 			this.canvas.height = 370;
 			this.canvas.width = 629;
 			this.context = this.canvas.getContext('2d')
@@ -39,7 +40,7 @@ $(document).ready(function() {
 		width: 25,
 		xPos: 300,
 		yPos: 200,
-		xySpeed: 4,
+		xySpeed: 2,
 		xDir: -3,
 		yDir: 0.1,
 		maxThetaUp: 0,
@@ -48,6 +49,18 @@ $(document).ready(function() {
 		ball: new Image(),
 		set source(file){
 			this.ball.src = file;
+		},
+		resetBall : function () {
+			this.height = 25;
+			this.width = 25;
+			this.xPos = 300;
+			this.yPos = 200;
+			this.xySpeed = 2;
+			this.xDir = -3;
+			this.yDir = 0.1;
+			this.maxThetaUp = 0;
+			this.maxThetaDown = 0;
+			this.adjTheta = 0;
 		},
 		draw : function () {
 			gameArea.clear();
@@ -169,15 +182,29 @@ $(document).ready(function() {
 	initGame();
 
 	function initGame() {
+
 		gameArea.start();
-		gameArea.clear();
+		// gameArea.drawText();
+		gameArea.drawCanvasText();
 		tennisBall.source = "images/ball.gif";
 		playerRacket.source = "images/playerracket.png";
 		computerRacket.source = "images/computerracket.png";
-		drawLoop();
+		// startNewGame();
+		
 	}
-
-
+	function startNewGame() {
+		gameArea.start();
+		gameArea.clear();
+		console.log("start");
+		// drawLoop();
+		runGame();
+		
+	}
+	function runGame() {
+		window.setTimeout(()=>window.setInterval(function(){
+			drawLoop();
+	  	}, 16),1000);
+	}
 	function lose(){
 		if(computerScore >= 3){
 			return true;
@@ -232,6 +259,7 @@ $(document).ready(function() {
 	function resetField() {
 		gameArea.clear();
 		
+		tennisBall.resetBall();
 		tennisBall.xPos = 400;
 		tennisBall.yPos = 200;
 		tennisBall.xDir = -3;
