@@ -135,29 +135,35 @@ $(document).ready(function() {
 		}
 	}
 	var playerRacket = {
-		height: 50,
-		width: 10,
-		xPos: 20,
+		height: 70,
+		width: 40,
+		xPos: 0,
 		yPos: 300,
+		racket: new Image(),
+		set source(file){
+			this.racket.src = file;
+		},
 		draw : function () {
-			gameArea.context.fillStyle = "#FF0000";
-			gameArea.context.fillRect(this.xPos, this.yPos, this.width, this.height);
+			gameArea.context.drawImage(this.racket, this.xPos, this.yPos, this.width, this.height);
 		}
 	}
 	var computerRacket = {
-		height: 50,
-		width: 10,
-		xPos: 602,
+		height: 70,
+		width: 40,
+		xPos: 580,
 		yPos: 300,
 		adjSpeed: 0,
+		racket: new Image(),
+		set source(file){
+			this.racket.src = file;
+		},
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
 			
 			if(tennisBall.xDir > 0 && this.yPos > 0 && this.yPos < 370 ){
 				this.yPos += this.adjSpeed;
-			}
-			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);						
-
+			}					
+			gameArea.context.drawImage(this.racket, this.xPos, this.yPos, this.width, this.height);
 		}
 	}
 	initGame();
@@ -166,6 +172,8 @@ $(document).ready(function() {
 		gameArea.start();
 		gameArea.clear();
 		tennisBall.source = "images/ball.gif";
+		playerRacket.source = "images/playerracket.png";
+		computerRacket.source = "images/computerracket.png";
 		drawLoop();
 	}
 
