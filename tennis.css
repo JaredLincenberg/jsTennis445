@@ -142,9 +142,9 @@ div.aboutgame{
 }
 
 .module{
-	/* 4 modules fill the screen 22%+1.5%+1.5%=25% */
-	width: 22%;
-	box-sizing: border-box;
+  /* 4 modules fill the screen 22%+1.5%+1.5%=25% */
+  width: 22%;
+  box-sizing: border-box;
   float: left;
   color: white;
   margin-right: 1.5%;
@@ -176,9 +176,72 @@ canvas#gameCanvas{
   background-image: url("images/court.png"); 
   background-repeat: no-repeat; 
   background-color: #1db34a; 
-  background-position: center;
+  background-position: center;  
 }
 
+div#canvasdiv{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 5%;
+  padding: 30px;
+  background-image: url("images/canvasbackground.png"); 
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;  
+  z-index: -1;
+}
+
+#canvastitle{
+  font-size: 40px;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5em;
+  top: 25%;
+  width: 100%;
+  font-weight: 900;
+  color: white;
+  white-space: nowrap;
+  display: inline-block;
+  letter-spacing: .1em;
+  text-shadow: .04em .04em 0 #9cb8b3;
+}
+
+p.canvasscore{
+  float: left;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+p.canvaslive{
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#canvasstart{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color: black;
+  font-size: 25px;
+  text-align:center;
+  transition: all 0.2s;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+#canvasstart:hover{
+  color:#000000;
+  background-color:#FFFFFF;
+}
 button#startbtn{
   margin: auto;
 }
