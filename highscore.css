@@ -17,7 +17,7 @@
   margin-right: auto;
 }
 
-table {
+div table {
   border-collapse: collapse;
   margin:auto; 
   margin-top: 30px;
@@ -93,5 +93,11 @@ table#myhightable tfoot{
   font-weight: bold;	
 }
 
+#highdiv{
+  margin-top: 40px;
+}
 
-
+table#hightable, #myhightable{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
