@@ -37,17 +37,17 @@ tbody tr:last-of-type td{
 	border-bottom: 1px solid black;
 }
 
-table#table1 thead{
+table#hightable thead{
   background-color: lightGrey;
   color: black;
 }
 
-table#table2 thead{
+table#myhightable thead{
   background-color: lightGrey;
   color: black;
 }
 
-table#table1 caption{
+table#hightable caption{
   display: table-caption;
   text-align: center;
   font-weight: bold;
@@ -55,7 +55,7 @@ table#table1 caption{
   color: black;
 }
 
-table#table2 caption{
+table#myhightable caption{
   display: table-caption;
   text-align: center;
   font-weight: bold;
@@ -63,31 +63,31 @@ table#table2 caption{
   color: black;
 }
 
-#table1 tr:nth-of-type(2n+1){
+#hightable tr:nth-of-type(2n+1){
   background-color: darkGreen;
   color: lightGrey;
 }
 
-#table2 tr:nth-of-type(2n+1){
+#myhightable tr:nth-of-type(2n+1){
   background-color: darkRed;
   color: lightGrey;
 }
 
-#table1 tr:nth-of-type(2n+2){
+#hightable tr:nth-of-type(2n+2){
   background-color: darkGrey;
 }
 
-#table2 tr:nth-of-type(2n+2){
+#myhightable tr:nth-of-type(2n+2){
   background-color: darkGrey;
 }
 
-table#table1 tfoot{
+table#hightable tfoot{
   background-color: orange;
   color: yellow;
   font-weight: bold;	
 }
 
-table#table2 tfoot{
+table#myhightable tfoot{
   background-color: orange;
   color: yellow;
   font-weight: bold;	
