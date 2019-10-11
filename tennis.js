@@ -35,6 +35,9 @@ $(document).ready(function() {
 		yPos: 200,
 		xDir: Math.random() * (4) - 2,
 		yDir: Math.random() * (4) - 2,
+		maxThetaUp: 0,
+		maxThetaDown: 0,
+		xySpeed: 4,
 		ball: new Image(),
 		set source(file){
 			this.ball.src = file;
@@ -57,18 +60,43 @@ $(document).ready(function() {
 			}
 			if(this.yPos + this.height >= playerRacket.yPos && this.yPos <= playerRacket.yPos+playerRacket.height){
 				if(this.xPos >= playerRacket.xPos && this.xPos <= playerRacket.xPos+playerRacket.width){
-					this.xDir *= -1.1;
-					this.yDir *= 1.1;
+					// the ball moves down
+					if(Math.random() >= 0.5){
+						this.maxThetaDown = (338 - this.yPos) / 583;
+						console.log(this.maxThetaDown);
+						adjTheta = this.maxThetaDown * Math.random();
+						this.yDir = Math.sin(adjTheta) * this.xySpeed;
+						this.xDir = Math.cos(adjTheta) * this.xySpeed;					
+					}
+					// the ball moves up
+					else{
+						this.maxThetaUp = (this.yPos - 49) / 583;
+						adjTheta = this.maxThetaUp * Math.random();
+						this.yDir = -1 * Math.sin(adjTheta) * this.xySpeed;
+						this.xDir = Math.cos(adjTheta) * this.xySpeed;	
+					}
 				}
 			}
 
 			if(this.yPos >= computerRacket.yPos && this.yPos <= computerRacket.yPos+computerRacket.height){
 				if(this.xPos + this.width >= computerRacket.xPos && this.xPos + this.width <= computerRacket.xPos+computerRacket.width){
-					this.xDir *= -1.1;
-					this.yDir *= 1.1;
+					// the ball moves down
+					if(Math.random() >= 0.5){
+						this.maxThetaDown = (338 - this.yPos) / 583;
+						adjTheta = this.maxThetaDown * Math.random();
+						this.yDir = Math.sin(adjTheta) * this.xySpeed;
+						this.xDir = -1 * Math.cos(adjTheta) * this.xySpeed;					
+					}
+					// the ball moves up
+					else{
+						this.maxThetaUp = (this.yPos - 49) / 583;
+						adjTheta = this.maxThetaUp * Math.random();
+						this.yDir = -1 * Math.sin(adjTheta) * this.xySpeed;
+						this.xDir = -1 * Math.cos(adjTheta) * this.xySpeed;	
+					}
 				}
 			}
-
+			console.log(this.xDir);
 			this.xPos += this.xDir;
 			this.yPos += this.yDir;
 		}
@@ -147,8 +175,8 @@ $(document).ready(function() {
 		
 		tennisBall.xPos = 400;
 		tennisBall.yPos = 200;
-		tennisBall.xDir = Math.random() * (4) - 2;
-		tennisBall.yDir = Math.random() * (4) - 2;
+		tennisBall.xDir = Math.random() * (3) + 1;
+		tennisBall.yDir = Math.random() - 0.5;
 	}
 
 	// UNCOMMENT WHEN TURNING IN
