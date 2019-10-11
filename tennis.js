@@ -9,7 +9,7 @@ $(document).ready(function() {
 	var testScore = 10;
 	var computerScore = 0;
 	var playerScore = 0;
-	var racketSpeed = 5;
+	var racketSpeed = 7;
 	var gameArea = {
 		canvas : document.getElementById('gameCanvas'),
 		start : function() {
@@ -34,8 +34,8 @@ $(document).ready(function() {
 		xPos: 300,
 		yPos: 200,
 		xySpeed: 4,
-		xDir: -1 * Math.random() * (3) + 3,
-		yDir: 0,
+		xDir: -3,
+		yDir: 0.1,
 		maxThetaUp: 0,
 		maxThetaDown: 0,
 		adjTheta: 0,
@@ -53,7 +53,6 @@ $(document).ready(function() {
 				resetField();
 			}
 			if(this.xPos > 602){
-				playerScore++;
 				resetField();
 			}
 			if(this.yPos + this.height > 358 || this.yPos < 12){
@@ -75,7 +74,31 @@ $(document).ready(function() {
 						this.yDir = -1 * Math.sin(this.adjTheta) * this.xySpeed;
 						this.xDir = Math.cos(this.adjTheta) * this.xySpeed;	
 					}
+					
+					// update computer racket speed based on ball angle and position			
+					hypotenuse = (602 - this.xPos) / Math.cos(this.adjTheta);
+					timeToReach = hypotenuse / this.xySpeed;
+					// the ball is moving down
+					if(this.yDir > 0){
+						ballLandingY = Math.tan(this.adjTheta) * (602 - this.xPos) + this.yPos;
+					}
+					// the ball moving up
+					else{
+						ballLandingY = this.yPos - Math.tan(this.adjTheta) * (602 - this.xPos);
+					}
+					// paddle is on the left
+					if(computerRacket.yPos - ballLandingY > 0){
+						targetDistance = Math.abs(computerRacket.yPos - ballLandingY);
+						computerRacket.adjSpeed = (-1) * targetDistance / timeToReach;	
+					}
+					// paddle is on the right
+					else{
+						targetDistance = Math.abs(computerRacket.yPos - ballLandingY + computerRacket.height/2);
+						computerRacket.adjSpeed = targetDistance / timeToReach;	
+					}
+					
 				}
+				
 			}
 
 			if(this.yPos + this.height >= computerRacket.yPos && this.yPos <= computerRacket.yPos + computerRacket.height){
@@ -94,6 +117,7 @@ $(document).ready(function() {
 						this.yDir = -1 * Math.sin(adjTheta) * this.xySpeed;
 						this.xDir = -1 * Math.cos(adjTheta) * this.xySpeed;	
 					}
+					playerScore++;
 				}
 			}
 			this.xPos += this.xDir;
@@ -118,20 +142,21 @@ $(document).ready(function() {
 		adjSpeed: 0,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
-			if(tennisBall.yPos < this.yPos && computerRacket.yPos > 0){
-				this.yPos--;
-			} 
-			else if(tennisBall.yPos > this.yPos && computerRacket.yPos + computerRacket.yPos <= 370){
-				this.yPos++;
-			}
-			//this.yPos += this.adjSpeed;
 			
-			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);
+			if(tennisBall.xDir > 0 && this.yPos > 0 && this.yPos < 370 ){
+				this.yPos += this.adjSpeed;
+			}
+			gameArea.context.fillRect(this.xPos,this.yPos,this.width,this.height);						
+
 		}
 	}
 	initGame();
 	
-	
+	function levelUp(){
+		if(playerScore % 5 == 0){
+			tennisBall.xySpeed += 1;
+		}
+	}
 
 
 	function initGame() {
@@ -164,6 +189,7 @@ $(document).ready(function() {
 			computerRacket.draw();		
 			gameArea.drawText(playerScore.toString(), 5, 40);
 			gameArea.drawText(computerScore.toString(), 610, 40);
+			//levelUp();
 		}
 		else{
 			printGameOver();
@@ -199,7 +225,7 @@ $(document).ready(function() {
 		
 		tennisBall.xPos = 400;
 		tennisBall.yPos = 200;
-		tennisBall.xDir = 3;
+		tennisBall.xDir = -3;
 		tennisBall.yDir = 0.1;
 	}
 
