@@ -18,13 +18,20 @@ $(document).ready(function() {
 			this.context = this.canvas.getContext('2d')
 			this.frameNumber = 0;
 			this.context.font ="30px Arial";
+			this.context.fillText("You", 100, 100);
+			this.context.fillText("Computer", 500, 100);
 		},
 		clear : function() {
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		},
-		drawText : function(text, x, y) {
-			$("p.canvaslive").html("Live: " + (3-computerScore));
+		drawText : function() {
+			$("p.canvaslive").html("Lives: " + (3-computerScore));
 			$("p.canvasscore").html("Score: " + playerScore);
+		},
+		drawCanvasText : function() {
+			this.context.font ="20px Arial";
+			this.context.fillText("You", 0, 30);
+			this.context.fillText("Computer", 540, 30);
 		}
 	}
 	var tennisBall = {
@@ -183,9 +190,8 @@ $(document).ready(function() {
 			tennisBall.draw();
 			playerRacket.draw();
 			computerRacket.draw();		
-			gameArea.drawText(playerScore.toString(), 5, 40);
-			gameArea.drawText(computerScore.toString(), 610, 40);
-			
+			gameArea.drawText();
+			gameArea.drawCanvasText();
 		}
 		else{
 			printGameOver();
