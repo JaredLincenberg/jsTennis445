@@ -75,7 +75,7 @@ $(document).ready(function() {
 						this.xDir = Math.cos(this.adjTheta) * this.xySpeed;	
 					}
 					
-					// update computer racket speed based on ball angle and position			
+					/* update computer racket speed based on ball angle and position*/		
 					hypotenuse = (602 - this.xPos) / Math.cos(this.adjTheta);
 					timeToReach = hypotenuse / this.xySpeed;
 					// the ball is moving down
@@ -96,6 +96,10 @@ $(document).ready(function() {
 						targetDistance = Math.abs(computerRacket.yPos - ballLandingY + computerRacket.height/2);
 						computerRacket.adjSpeed = targetDistance / timeToReach;	
 					}
+					
+					// speeds up
+					this.xySpeed += 0.3;	
+					console.log(this.xySpeed);
 					
 				}
 				
@@ -151,13 +155,6 @@ $(document).ready(function() {
 		}
 	}
 	initGame();
-	
-	function levelUp(){
-		if(playerScore % 5 == 0){
-			tennisBall.xySpeed += 1;
-		}
-	}
-
 
 	function initGame() {
 		gameArea.start();
@@ -189,13 +186,12 @@ $(document).ready(function() {
 			computerRacket.draw();		
 			gameArea.drawText(playerScore.toString(), 5, 40);
 			gameArea.drawText(computerScore.toString(), 610, 40);
-			//levelUp();
+			
 		}
 		else{
 			printGameOver();
 		}
 	}
-
 
 	function keyEvent(event) {
 		switch(event.keyCode) {
