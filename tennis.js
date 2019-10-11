@@ -31,7 +31,7 @@ $(document).ready(function() {
 	var tennisBall = {
 		height: 25,
 		width: 25,
-		xPos: 400,
+		xPos: 300,
 		yPos: 200,
 		xySpeed: 4,
 		xDir: -1 * Math.random() * (3) + 3,
@@ -118,9 +118,10 @@ $(document).ready(function() {
 		adjSpeed: 0,
 		draw : function () {
 			gameArea.context.fillStyle = "#FF0000";
-			if(tennisBall.yPos < this.yPos){
+			if(tennisBall.yPos < this.yPos && computerRacket.yPos > 0){
 				this.yPos--;
-			} else if(tennisBall.yPos > this.yPos){
+			} 
+			else if(tennisBall.yPos > this.yPos && computerRacket.yPos + computerRacket.yPos <= 370){
 				this.yPos++;
 			}
 			//this.yPos += this.adjSpeed;
@@ -141,15 +142,32 @@ $(document).ready(function() {
 	}
 
 
-
+	function lose(){
+		if(computerScore >= 3){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	function printGameOver(){
+		gameArea.context.font ="50px Arial";
+		gameArea.context.fillText("Game Over", 180, 200);
+	}
+	
 	function drawLoop(){
-
-		tennisBall.updateBall();
-		tennisBall.draw();
-		playerRacket.draw();
-		computerRacket.draw();		
-		gameArea.drawText(playerScore.toString(), 5, 40);
-		gameArea.drawText(computerScore.toString(), 610, 40);
+		if(!lose()){			
+			tennisBall.updateBall();
+			tennisBall.draw();
+			playerRacket.draw();
+			computerRacket.draw();		
+			gameArea.drawText(playerScore.toString(), 5, 40);
+			gameArea.drawText(computerScore.toString(), 610, 40);
+		}
+		else{
+			printGameOver();
+		}
 	}
 
 
@@ -157,14 +175,18 @@ $(document).ready(function() {
 		switch(event.keyCode) {
 			case 119:
 				// w
-				playerRacket.yPos-=racketSpeed;
+				if(playerRacket.yPos > 0){
+					playerRacket.yPos-=racketSpeed;
+				}
 				break;
 			case 65:
 				// a
 				break;
 			case 115:
 				// s
-				playerRacket.yPos+=racketSpeed;
+				if(playerRacket.yPos + playerRacket.height < 370){
+					playerRacket.yPos+=racketSpeed;
+				}
 				break;
 			case 68:
 				// d
