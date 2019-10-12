@@ -28,6 +28,12 @@ header.welcome{
 img.titleimg{
   width:20%;
   margin:auto;
+  transition: width 2s, height 2s;
+}
+
+img.titleimg:hover {
+  width: 30%;
+  height: 30%;
 }
 
 img.gif{
@@ -262,7 +268,7 @@ button#startbtn{
 }
 
 footer{
-  background-color: darkRed;
+  background-image: linear-gradient(darkRed, red, yellow);
   padding: 20px;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -278,3 +284,9 @@ footer{
 footer p a{
   color: lightblue;
 }
+
+img.gif:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
