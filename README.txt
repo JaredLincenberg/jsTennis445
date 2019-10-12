@@ -19,7 +19,11 @@ Properly used semantics tag.
 	Used Nav for navigation and Section for chunks of information about the game.
 HTML5 CANVAS!!!
 
-CSS3                                                                                                                                                       
+CSS3  
+linear-gradient(in footer)
+transform(image on the right of navigation bar)  
+transition(the "tennis game" title) 
+And many other CSS3 features like:                                                                                                                                                  
 Round corners
 Box sizing
 Box shadow
