@@ -15,7 +15,8 @@ body{
 }
 
 header.welcome{
-  background-color: #73be27;
+  background-image: linear-gradient(green, #73be27);
+  /*background-color: #73be27;*/
   padding-top: 30px;
   padding-right: 30px;
   padding-bottom: 60px;
@@ -27,6 +28,8 @@ header.welcome{
 
 img.titleimg{
   width:20%;
+  padding: 10px;
+  padding-left: 30px;
   margin:auto;
   transition: width 2s, height 2s;
 }
@@ -268,7 +271,7 @@ button#startbtn{
 }
 
 footer{
-  background-image: linear-gradient(darkRed, red, yellow);
+  background-image: linear-gradient(darkRed, red, #ff8c00);
   padding: 20px;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -282,7 +285,7 @@ footer{
 }
 
 footer p a{
-  color: lightblue;
+  color: black;
 }
 
 img.gif:hover {
