@@ -222,8 +222,9 @@ $(document).ready(function() {
 		gameArea.context.font ="50px Arial";
 		gameArea.context.fillText("Game Over", 180, 200);
 		if (!hasReported) {
-			highscore(playerScorer);
 			hasReported = true;
+			highscore(playerScorer);
+			
 		}
 	}
 	
